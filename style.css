@@ -1,113 +1,35 @@
-/* —— basic reset —— */
+/* L'Oréal Brand Colors */
+:root {
+  --loreal-black: #000000; /* Iconic black */
+  --loreal-white: #ffffff; /* Radiant white */
+  --loreal-red: #d2001f; /* Passionate red */
+  --loreal-gold: #c9a96e; /* Eternal gold */
+  --loreal-dark-gray: #333333;
+  --loreal-light-gray: #f5f5f5;
+}
+
+/* Reset and base styles */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* —— body + fonts —— */
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
-  display: flex;
-  justify-content: center;
+  /* Use Helvetica Now Display for body text with fallbacks */
+  font-family: "Helvetica Now Display W05 Reg", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--loreal-light-gray),
+    var(--loreal-white)
+  );
+  min-height: 100vh;
+  color: var(--loreal-black);
+  font-weight: 500; /* Increased from 400 to 500 for bolder text */
 }
 
-.page-wrapper {
-  width: 90%;
-  max-width: 900px;
-}
-
-/* header */
-.site-header {
-  text-align: center;
-  padding-top: 50px;
-}
-
-.site-title {
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-/* chat window */
-.chatbox {
-  margin: 40px 0;
-}
-
-.chat-window {
-  height: 360px;
-  border: 1px solid #000;
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.5;
-  overflow-y: auto;
-  background: #fafafa;
-  white-space: pre-line;
-}
-
-/* messages */
-.msg {
-  margin-bottom: 14px;
-  line-height: 1.5;
-}
-
-.msg.user {
-  color: #000;
-}
-
-.msg.ai {
-  color: #666666;
-}
-
-/* input row */
-.chat-form {
-  display: flex;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.chat-form input {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #ccc;
-  font-size: 18px;
-}
-
-.chat-form input:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-.chat-form button {
-  font-size: 18px;
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.chat-form button .material-icons {
-  font-size: 24px;
-}
-
-.chat-form button:hover {
-  background: #666666;
-}
-
-.chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-/* visually hidden */
+/* Accessibility helper */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -120,24 +42,406 @@ body {
   border: 0;
 }
 
-/* footer */
-.site-footer {
-  margin: 60px 0 40px;
+/* Page layout */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--loreal-white);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Header styling with L'Oréal branding */
+.site-header {
+  background: var(--loreal-white);
+  color: var(--loreal-black);
+  padding: 2rem 1.5rem;
   text-align: center;
-  font-size: 14px;
-  color: #666;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  border-bottom: 1px solid var(--loreal-light-gray);
+}
+
+/* Add gold accent border */
+.site-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--loreal-gold),
+    var(--loreal-red),
+    var(--loreal-gold)
+  );
+}
+
+.site-title {
+  /* Use Halesworth eText Bold for headers */
+  font-family: "Halesworth eText Bold", "Helvetica Now Display W05 Bd",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0 0;
+  letter-spacing: 0.5px;
+  color: var(--loreal-black);
+}
+
+.logo {
+  max-height: 60px;
+  max-width: 200px;
+  margin-bottom: 0.5rem;
+  filter: none;
+  drop-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content area */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+}
+
+/* Chat window */
+.chat-window {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background: var(--loreal-light-gray);
+  border-bottom: 2px solid var(--loreal-gold);
+}
+
+/* Message styling with conversation-like bubbles */
+.message {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+
+.message.user {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.message.assistant {
+  justify-content: flex-start;
+}
+
+.message-content {
+  max-width: 75%;
+  padding: 0.875rem 1.125rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-family: "Helvetica Now Display W05 Lt", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+/* User message bubbles - right side */
+.message.user .message-content {
+  background: linear-gradient(135deg, var(--loreal-red), #b8001a);
+  color: var(--loreal-white);
+  border-radius: 18px 18px 4px 18px;
+  border: 2px solid var(--loreal-gold);
+  margin-right: 0.25rem;
+}
+
+/* Add speech bubble tail for user messages */
+.message.user .message-content::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -6px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-left-color: var(--loreal-red);
+  border-bottom: none;
+  transform: rotate(45deg);
+}
+
+/* Assistant message bubbles - left side */
+.message.assistant .message-content {
+  background: var(--loreal-white);
+  color: var(--loreal-black);
+  border-radius: 18px 18px 18px 4px;
+  border: 2px solid var(--loreal-gold);
+  margin-left: 0.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add speech bubble tail for assistant messages */
+.message.assistant .message-content::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -6px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-right-color: var(--loreal-white);
+  border-bottom: none;
+  transform: rotate(-45deg);
+}
+
+/* Avatar styling for conversation feel */
+.message-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  border: 2px solid var(--loreal-gold);
+  font-family: "Halesworth eText Bold", "Helvetica Now Display W05 Bd",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.message.user .message-avatar {
+  background: var(--loreal-black);
+  color: var(--loreal-gold);
+  order: 1;
+}
+
+.message.assistant .message-avatar {
+  background: linear-gradient(135deg, var(--loreal-red), var(--loreal-gold));
+  color: var(--loreal-white);
+  order: 0;
+}
+
+/* Chat form with premium styling */
+.chat-form {
+  padding: 1.5rem;
+  background: var(--loreal-white);
+  border-top: 3px solid var(--loreal-gold);
+  display: flex;
+  gap: 0.75rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#userInput {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--loreal-gold);
+  border-radius: 30px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background: var(--loreal-white);
+  color: var(--loreal-black);
+  /* Use Helvetica Now Display Regular for input */
+  font-family: "Helvetica Now Display W05 Reg", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-weight: 500; /* Increased from 400 to 500 for bolder input text */
+}
+
+#userInput:focus {
+  border-color: var(--loreal-red);
+  box-shadow: 0 0 0 4px rgba(210, 0, 31, 0.1);
+  transform: translateY(-1px);
+}
+
+#userInput::placeholder {
+  color: #666; /* Darkened from #888 to #666 for better contrast */
+  /* Use Helvetica Now Display Light for placeholder */
+  font-family: "Helvetica Now Display W05 Lt", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-weight: 500; /* Increased from 300 to 500 for placeholder */
+}
+
+#sendBtn {
+  background: linear-gradient(135deg, var(--loreal-red), #b8001a);
+  color: var(--loreal-white);
+  border: 2px solid var(--loreal-gold);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(210, 0, 31, 0.3);
+}
+
+#sendBtn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(210, 0, 31, 0.4);
+}
+
+#sendBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer with L'Oréal styling */
+.site-footer {
+  background: var(--loreal-black);
+  color: var(--loreal-white);
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 3px solid var(--loreal-gold);
+  font-size: 0.85rem;
+  /* Use Helvetica Now Display Light for footer */
+  font-family: "Helvetica Now Display W05 Lt", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-weight: 500; /* Increased from 300 to 500 for footer text */
 }
 
 .site-footer nav {
-  margin-top: 12px;
+  margin-top: 0.75rem;
 }
 
 .site-footer a {
-  margin: 0 8px;
-  color: #000;
+  color: var(--loreal-gold);
   text-decoration: none;
+  margin: 0 0.75rem;
+  font-weight: 600; /* Increased from 500 to 600 for footer links */
+  transition: color 0.3s ease;
+  /* Use Halesworth eText Medium for navigation links */
+  font-family: "Halesworth eText Medium", "Helvetica Now Display W05 Reg",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: var(--loreal-red);
+  text-decoration: underline;
+}
+
+/* Premium loading animation */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.875rem 1.125rem;
+  background: var(--loreal-light-gray);
+  border-radius: 18px 18px 18px 4px;
+  margin-left: 0.25rem;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--loreal-gold);
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+  background: var(--loreal-red);
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+  background: var(--loreal-gold);
+}
+
+@keyframes typing {
+  0%,
+  60%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  30% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .site-title {
+    font-size: 1.4rem;
+  }
+
+  .logo {
+    max-height: 50px;
+  }
+
+  .message-content {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .message-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.7rem;
+  }
+
+  /* Adjust speech bubble tails for mobile */
+  .message.user .message-content::after {
+    border-width: 5px;
+    right: -5px;
+  }
+
+  .message.assistant .message-content::before {
+    border-width: 5px;
+    left: -5px;
+  }
+}
+
+/* Add subtle animations for new messages */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message {
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+/* Enhanced scrollbar for better conversation experience */
+.chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-window::-webkit-scrollbar-track {
+  background: var(--loreal-light-gray);
+  border-radius: 3px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+  background: var(--loreal-gold);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.chat-window::-webkit-scrollbar-thumb:hover {
+  background: var(--loreal-red);
 }

@@ -3,15 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
+    <title>L'Oréal Beauty Assistant</title>
+
+    <!-- L'Oréal Brand Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Material Icons for send button -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -19,7 +24,12 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <img
+          src="img/loreal-logo.png"
+          alt="L'Oréal Beauty Assistant"
+          class="logo"
+        />
+        <h1 class="site-title">L'Oréal Beauty Assistant</h1>
       </header>
 
       <!------- Chat Area ------->
@@ -35,7 +45,7 @@
               id="userInput"
               name="userInput"
               type="text"
-              placeholder="Ask me about products or routines…"
+              placeholder="Ask me about makeup, skincare, haircare, or fragrances…"
               autocomplete="off"
               required
             />
@@ -49,7 +59,7 @@
 
       <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
+        <p>&copy; 2025 L'Oréal Beauty Assistant. All rights reserved.</p>
         <nav>
           <!-- These URLs are placeholders -->
           <a href="#">Privacy Policy</a>
